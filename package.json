@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx tsc",
+    "build": "npx tsc src/**/*.ts",
     "start": "node dist/app.js",
     "dev": "nodemon src/app.ts",
     "lint": "eslint src/**/*.ts",
@@ -42,6 +42,7 @@
     "express": "^4.18.2",
     "pg": "^8.11.0",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.32.0"
+    "sequelize": "^6.32.0",
+    "sequelize-typescript": "^2.1.5"
   }
 }
