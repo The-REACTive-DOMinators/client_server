@@ -10,7 +10,7 @@ export const dbInit = () => {
         ssl: true
       }
     });
-  } catch (error: any) {
-    throw new Error(error);
+  } catch {
+    throw new Error();
   }
 };
