@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc -p .",
-    "start": "node dist/app.js",
-    "dev": "nodemon src/app.ts",
+    "start": "tsc -p . && node dist/src/index.js",
+    "dev": "nodemon src/index.ts",
     "lint": "eslint src/**/*.ts",
     "format": "eslint src/**/*.ts --fix"
   },

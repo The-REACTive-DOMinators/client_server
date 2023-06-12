@@ -1,16 +1,19 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express } from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import { dbInit } from './utils/dbInit';
+import { productsRoutes } from './routes/products';
 
-const app: Express = express();
+export const startApp = () => {
+  const app: Express = express();
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(cors());
+  app.use(bodyParser.json());
+  app.use(cors());
+  app.use('/phones', productsRoutes);
 
-dbInit();
+  app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+  });
 
-app.get('/', (req: Request, res: Response) => {
-  res.json({ message: 'Hello World!' });
-});
+  dbInit();
+};
