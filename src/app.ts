@@ -12,5 +12,9 @@ export const startApp = () => {
   app.use(express.static('dist/public'));
   app.use('/phones', productsRoutes);
 
+  app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+  });
+
   dbInit();
 };
