@@ -15,6 +15,9 @@ const startApp = () => {
     app.use((0, cors_1.default)());
     app.use(express_1.default.static('dist/public'));
     app.use('/phones', products_1.productsRoutes);
+    app.listen(3000, () => {
+        console.log('Server is running on port 3000');
+    });
     (0, dbInit_1.dbInit)();
 };
 exports.startApp = startApp;
