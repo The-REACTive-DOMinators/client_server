@@ -11,5 +11,6 @@ export const startApp = () => {
   app.use(cors());
   app.use(express.static('dist/public'));
   app.use('/phones', productsRoutes);
+
   dbInit();
 };
