@@ -9,7 +9,7 @@ export const startApp = () => {
 
   app.use(bodyParser.json());
   app.use(cors());
-  app.use(express.static('dist/public'));
+  app.use(express.static('public'));
   app.use('/phones', productsRoutes);
 
   app.listen(3000, () => {
