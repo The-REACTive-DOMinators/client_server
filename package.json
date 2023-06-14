@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -p .",
-    "start": "tsc -p . && node dist/src/index.js",
+    "build": "tsc && copyfiles -u 1 \"public/img/**/*\" dist/public/",
+    "start": "npm run build && node dist/src/index.js",
     "dev": "nodemon src/index.ts",
     "lint": "eslint src/**/*.ts",
     "format": "eslint src/**/*.ts --fix"
@@ -27,6 +27,8 @@
     "@types/node": "^20.2.5",
     "@typescript-eslint/eslint-plugin": "^5.59.9",
     "@typescript-eslint/parser": "^5.59.9",
+    "copyfiles": "^2.4.1",
+    "cpy-cli": "^4.2.0",
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
