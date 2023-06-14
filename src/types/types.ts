@@ -7,7 +7,7 @@ export interface whereCondition {
 }
 
 export interface query {
-  sortBy?: any;
+  sortBy?: string | any;
   amount?: number;
   id?: number;
   sortType?: string;
