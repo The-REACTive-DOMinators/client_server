@@ -5,6 +5,7 @@ import path from 'path';
 import { dbInit } from './utils/dbInit';
 import { productsRoutes } from './routes/products';
 import { phonesRoutes } from './routes/phones';
+import { newestRoutes } from './routes/newest';
 
 export const startApp = () => {
   const app: Express = express();
@@ -14,6 +15,7 @@ export const startApp = () => {
   app.use(express.static(path.resolve('public')));
   app.use('/products', productsRoutes);
   app.use('/phones', phonesRoutes);
+  app.use('/', newestRoutes);
 
   app.listen(3000, () => {
     console.log('Server is running on port 3000');
