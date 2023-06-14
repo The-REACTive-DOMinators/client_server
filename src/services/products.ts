@@ -2,7 +2,7 @@
 
 import { query } from '../types/types';
 import { filterByQuery } from '../utils/filterByQuery';
-import { Product } from '../models/Product';
+import { Product } from '../models/Products';
 
 function getAll(queries: query) {
   const whereCondition = filterByQuery(queries);
