@@ -3,14 +3,13 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import { dbInit } from './utils/dbInit';
 import { productsRoutes } from './routes/products';
-import path from 'path';
 
 export const startApp = () => {
   const app: Express = express();
 
   app.use(bodyParser.json());
   app.use(cors());
-  app.use('/public', express.static(path.join(__dirname, 'dist/public')));
+  app.use(express.static('public'));
   app.use('/phones', productsRoutes);
 
   app.listen(3000, () => {

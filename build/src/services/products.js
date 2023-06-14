@@ -10,7 +10,7 @@ function getAll(queries) {
             category: 'phones'
         },
         limit: whereCondition.amount,
-        order: [[whereCondition.sortBy, 'DESC']]
+        order: [[whereCondition.sortBy, whereCondition.sortType]]
     });
 }
 function getById(id) {
