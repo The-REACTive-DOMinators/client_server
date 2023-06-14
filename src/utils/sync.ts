@@ -1,29 +1,44 @@
-// import { Product } from '../models/Product';
+// import { Products } from '../models/Products';
 import { dbInit } from './dbInit';
 // import phones from '../../public/api/phones.json';
 import fs from 'fs';
 import path from 'path';
-import { Phone } from '../models/Phone';
+import { Phones } from '../models/Phone';
 
-function readData(folderName: string, fileName: string) {
-  const filePath = path.resolve(folderName, fileName);
+function readData(folderName: string) {
+  const folderPath = path.resolve(folderName);
 
-  const data = fs.readFileSync(filePath, 'utf8');
+  const files = fs.readdirSync(folderPath);
+  const data: any = [];
 
-  return JSON.parse(data);
+  files.forEach((file) => {
+    const filePath = path.resolve(folderPath, file);
+    const fileContent = fs.readFileSync(filePath, 'utf8');
+    const parsedData = JSON.parse(fileContent);
+
+    data.push(parsedData);
+  });
+
+  return data;
 }
 
 const seedInitialData = async () => {
-  // await Product.bulkCreate(phones);
-  await Phone.bulkCreate(readData('api', 'phones.json'));
+  // await Products.bulkCreate(phones);
+  await Phones.bulkCreate(readData('public/api/phones'));
 };
 
 const sync = async () => {
-  dbInit();
-  // await Product.sync({ alter: true });
-  await Phone.sync({ alter: true });
+  try {
+    dbInit();
+    // await Products.sync({ alter: true });
+    await Phones.sync({ alter: true });
 
-  await seedInitialData();
+    await seedInitialData();
+  } catch (error) {
+    console.log(error);
+
+    return;
+  }
 };
 
 sync();

@@ -1,90 +1,129 @@
-import { DataTypes } from 'sequelize';
-import { dbInit } from '../utils/dbInit';
-import { Product } from './Product';
+import {
+  AllowNull,
+  Column,
+  DataType,
+  HasOne,
+  Model,
+  PrimaryKey,
+  Table
+} from 'sequelize-typescript';
+import { Products } from './Products';
 
-const db = dbInit();
+@Table({
+  tableName: 'phones',
+  createdAt: false,
+  updatedAt: false
+})
+export class Phones extends Model {
+  @PrimaryKey
+  @AllowNull(false)
+  @Column({
+    type: DataType.STRING
+  })
+  id: string;
 
-export const Phone = db.define(
-  'products',
-  {
-    id: {
-      type: DataTypes.STRING,
-      primaryKey: true,
-      allowNull: false
-    },
-    namespaceId: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    capacityAvailable: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: false
-    },
-    capacity: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    priceRegular: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    priceDiscount: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    colorsAvailable: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: false
-    },
-    color: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    images: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: false
-    },
-    description: {
-      type: DataTypes.JSONB,
-      allowNull: false
-    },
-    screen: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    resolution: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    processor: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    ram: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    camera: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    zoom: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    cell: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: false
-    }
-  },
-  {
-    updatedAt: false,
-    createdAt: false
-  }
-);
+  @HasOne(() => Products)
+  products: Products;
 
-Phone.belongsTo(Product, { foreignKey: 'id', targetKey: 'phoneId' });
+  @AllowNull(false)
+  @Column({
+    type: DataType.STRING
+  })
+  namespaceId: string;
+
+  @AllowNull(false)
+  @Column({
+    type: DataType.STRING
+  })
+  name: string;
+
+  @AllowNull(false)
+  @Column({
+    type: DataType.ARRAY(DataType.STRING)
+  })
+  capacityAvailable: string[];
+
+  @AllowNull(false)
+  @Column({
+    type: DataType.STRING
+  })
+  capacity: string;
+
+  @AllowNull(false)
+  @Column({
+    type: DataType.INTEGER
+  })
+  priceRegular: number;
+
+  @AllowNull(false)
+  @Column({
+    type: DataType.INTEGER
+  })
+  priceDiscount: number;
+
+  @AllowNull(false)
+  @Column({
+    type: DataType.ARRAY(DataType.STRING)
+  })
+  colorsAvailable: string[];
+
+  @AllowNull(false)
+  @Column({
+    type: DataType.STRING
+  })
+  color: string;
+
+  @AllowNull(false)
+  @Column({
+    type: DataType.ARRAY(DataType.STRING)
+  })
+  images: string[];
+
+  @AllowNull(false)
+  @Column({
+    type: DataType.ARRAY(DataType.JSONB)
+  })
+  description: string[];
+
+  @AllowNull(false)
+  @Column({
+    type: DataType.STRING
+  })
+  screen: string;
+
+  @AllowNull(false)
+  @Column({
+    type: DataType.STRING
+  })
+  resolution: string;
+
+  @AllowNull(false)
+  @Column({
+    type: DataType.STRING
+  })
+  processor: string;
+
+  @AllowNull(false)
+  @Column({
+    type: DataType.STRING
+  })
+  ram: string;
+
+  @AllowNull(false)
+  @Column({
+    type: DataType.STRING
+  })
+  camera: string;
+
+  @AllowNull(false)
+  @Column({
+    type: DataType.STRING
+  })
+  zoom: string;
+
+  @AllowNull(false)
+  @Column({
+    type: DataType.ARRAY(DataType.STRING)
+  })
+  cell: string[];
+}
