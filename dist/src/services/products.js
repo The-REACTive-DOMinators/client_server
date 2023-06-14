@@ -2,10 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.productsService = void 0;
 const filterByQuery_1 = require("../utils/filterByQuery");
-const Product_1 = require("../models/Product");
+const Products_1 = require("../models/Products");
 function getAll(queries) {
     const whereCondition = (0, filterByQuery_1.filterByQuery)(queries);
-    return Product_1.Product.findAll({
+    return Products_1.Products.findAll({
         where: {
             category: 'phones'
         },
@@ -14,11 +14,7 @@ function getAll(queries) {
     });
 }
 function getById(id) {
-    return Product_1.Product.findOne({
-        where: {
-            phoneId: id
-        }
-    });
+    return Products_1.Products.findByPk(id);
 }
 exports.productsService = {
     getAll,

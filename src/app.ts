@@ -10,7 +10,7 @@ export const startApp = () => {
 
   app.use(bodyParser.json());
   app.use(cors());
-  app.use(express.static(path.join(__dirname, 'public')));
+  app.use('/public', express.static(path.join(__dirname, 'dist/public')));
   app.use('/phones', productsRoutes);
 
   app.listen(3000, () => {

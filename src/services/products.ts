@@ -2,26 +2,22 @@
 
 import { query } from '../types/types';
 import { filterByQuery } from '../utils/filterByQuery';
-import { Product } from '../models/Product';
+import { Products } from '../models/Products';
 
 function getAll(queries: query) {
   const whereCondition = filterByQuery(queries);
 
-  return Product.findAll({
+  return Products.findAll({
     where: {
       category: 'phones'
     },
     limit: whereCondition.amount,
-    order: [[whereCondition.sortBy, 'DESC']]
+    order: [[whereCondition.sortBy, whereCondition.sortType]]
   });
 }
 
 function getById(id: string) {
-  return Product.findOne({
-    where: {
-      phoneId: id
-    }
-  });
+  return Products.findByPk(id);
 }
 
 export const productsService = {
