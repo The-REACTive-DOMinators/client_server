@@ -2,12 +2,12 @@
 
 import { query } from '../types/types';
 import { filterByQuery } from '../utils/filterByQuery';
-import { Product } from '../models/Products';
+import { Products } from '../models/Products';
 
 function getAll(queries: query) {
   const whereCondition = filterByQuery(queries);
 
-  return Product.findAll({
+  return Products.findAll({
     where: {
       category: 'phones'
     },
@@ -17,7 +17,7 @@ function getAll(queries: query) {
 }
 
 function getById(id: string) {
-  return Product.findOne({
+  return Products.findOne({
     where: {
       phoneId: id
     }
