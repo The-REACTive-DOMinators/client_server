@@ -14,11 +14,7 @@ function getAll(queries) {
     });
 }
 function getById(id) {
-    return Products_1.Products.findOne({
-        where: {
-            phoneId: id
-        }
-    });
+    return Products_1.Products.findByPk(id);
 }
 exports.productsService = {
     getAll,

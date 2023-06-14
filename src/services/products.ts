@@ -17,11 +17,7 @@ function getAll(queries: query) {
 }
 
 function getById(id: string) {
-  return Products.findOne({
-    where: {
-      phoneId: id
-    }
-  });
+  return Products.findByPk(id);
 }
 
 export const productsService = {
