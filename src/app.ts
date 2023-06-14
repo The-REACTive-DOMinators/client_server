@@ -15,7 +15,7 @@ export const startApp = () => {
   app.use(cors());
   app.use(express.static(path.resolve('public')));
   app.use('/products', productsRoutes);
-  app.use('products/phones', phonesRoutes);
+  app.use('/products/phones', phonesRoutes);
   app.use('/newest', newestRoutes);
   app.use('/hot-prices', hotPricesRoutes);
 
