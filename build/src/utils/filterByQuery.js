@@ -5,7 +5,7 @@ function filterByQuery(queries) {
     const { sortBy, amount, sortType, currentPage } = queries;
     const whereCondition = {
         sortBy: 'year',
-        amount: 3,
+        amount: 16,
         sortType: 'DESC',
         currentPage: 1
     };
