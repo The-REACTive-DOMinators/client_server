@@ -1,13 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use strict';
 
 export interface whereCondition {
-  sortBy: string;
+  sortBy: any;
   amount: number;
   sortType: string;
 }
 
 export interface query {
-  sortBy?: string;
+  sortBy?: string | any;
   amount?: number;
   id?: number;
   sortType?: string;
