@@ -9,8 +9,9 @@ function getAll(queries) {
         where: {
             category: 'phones'
         },
-        limit: whereCondition.amount,
-        order: [[whereCondition.sortBy, whereCondition.sortType]]
+        limit: whereCondition.amount * whereCondition.currentPage,
+        order: [[whereCondition.sortBy, whereCondition.sortType]],
+        offset: (whereCondition.currentPage - 1) * whereCondition.amount
     });
 }
 function getById(id) {

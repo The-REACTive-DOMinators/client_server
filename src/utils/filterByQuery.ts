@@ -3,11 +3,12 @@
 import { query, whereCondition } from '../types/types';
 
 export function filterByQuery(queries: query): whereCondition {
-  const { sortBy, amount, sortType } = queries;
+  const { sortBy, amount, sortType, currentPage } = queries;
   const whereCondition: whereCondition = {
     sortBy: 'year',
     amount: 16,
-    sortType: 'DESC'
+    sortType: 'DESC',
+    currentPage: 1
   };
 
   if (sortBy) {
@@ -20,6 +21,10 @@ export function filterByQuery(queries: query): whereCondition {
 
   if (sortType) {
     whereCondition.sortType = sortType;
+  }
+
+  if (currentPage) {
+    whereCondition.currentPage = currentPage;
   }
 
   return whereCondition;
