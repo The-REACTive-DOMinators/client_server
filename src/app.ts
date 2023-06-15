@@ -1,17 +1,23 @@
 import express, { Express } from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import path from 'path';
 import { dbInit } from './utils/dbInit';
 import { productsRoutes } from './routes/products';
-import path from 'path';
+import { phonesRoutes } from './routes/phones';
+import { hotPricesRoutes } from './routes/hotPrices';
+import { newestRoutes } from './routes/newest';
 
 export const startApp = () => {
   const app: Express = express();
 
   app.use(bodyParser.json());
   app.use(cors());
-  app.use(express.static(path.join(path.resolve(), 'public')));
-  app.use('/phones', productsRoutes);
+  app.use(express.static(path.resolve('public')));
+  app.use('/products', productsRoutes);
+  app.use('/products/phones', phonesRoutes);
+  app.use('/newest', newestRoutes);
+  app.use('/hot-prices', hotPricesRoutes);
 
   app.listen(3000, () => {
     console.log('Server is running on port 3000');
