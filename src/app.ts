@@ -7,6 +7,8 @@ import { productsRoutes } from './routes/products';
 import { phonesRoutes } from './routes/phones';
 import { hotPricesRoutes } from './routes/hotPrices';
 import { newestRoutes } from './routes/newest';
+import { tabletsRoutes } from './routes/tablets';
+import { accessoriesRoutes } from './routes/accessories';
 
 export const startApp = () => {
   const app: Express = express();
@@ -16,6 +18,8 @@ export const startApp = () => {
   app.use(express.static(path.resolve('public')));
   app.use('/products', productsRoutes);
   app.use('/products/phones', phonesRoutes);
+  app.use('/tablets', tabletsRoutes);
+  app.use('/accessories', accessoriesRoutes);
   app.use('/newest', newestRoutes);
   app.use('/hot-prices', hotPricesRoutes);
 
