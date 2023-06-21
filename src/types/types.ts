@@ -6,6 +6,7 @@ export interface whereCondition {
   amount: number;
   sortType: string;
   currentPage: number;
+  category: string;
 }
 
 export interface query {
@@ -14,4 +15,5 @@ export interface query {
   id?: number;
   sortType?: string;
   currentPage?: number;
+  category?: string;
 }
