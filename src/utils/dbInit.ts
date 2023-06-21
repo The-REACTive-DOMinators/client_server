@@ -1,12 +1,15 @@
 import { Sequelize } from 'sequelize-typescript';
 import { models } from '../models';
+import dotenv from 'dotenv';
+dotenv.config();
 
-const URI =
-  'postgres://teamonereact:f1OFwSK0zGbW@ep-odd-leaf-749238.eu-central-1.aws.neon.tech/secondOne';
+const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, ENDPOINT_ID } = process.env;
+
+const URL = `postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}/${PGDATABASE}?options=project%3D${ENDPOINT_ID}`;
 
 export const dbInit = () => {
   try {
-    return new Sequelize(URI, {
+    return new Sequelize(URL, {
       models,
       dialectOptions: {
         ssl: true
