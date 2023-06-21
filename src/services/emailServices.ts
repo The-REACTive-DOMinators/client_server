@@ -21,7 +21,7 @@ export function send(email: string, subject: string, html: string) {
 }
 
 export function sendActivationLink(email: string, token: string) {
-  const link = `http://localhost:3000/login/activation/${token}`;
+  const link = `https://the-reactive-dominators.github.io/react_catalog/login/activation/${token}`;
 
   return send(
     email,

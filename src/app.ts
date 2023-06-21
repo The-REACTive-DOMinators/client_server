@@ -15,7 +15,7 @@ export const startApp = () => {
   app.use(express.json());
   app.use(
     cors({
-      origin: 'http://localhost:3000',
+      origin: 'https://the-reactive-dominators.github.io/react_catalog/',
       credentials: true
     })
   );
