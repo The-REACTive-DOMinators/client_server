@@ -33,7 +33,20 @@ const getPhoneById = async (req: Request, res: Response) => {
   res.json(phone);
 };
 
+const getCountOfPhone = async (req: Request, res: Response) => {
+  const phone = await phonesService.getCount();
+
+  if (!phone) {
+    res.sendStatus(404);
+    return;
+  }
+
+  res.status(200);
+  res.json(phone);
+};
+
 export const phonesController = {
   getRecommended,
-  getPhoneById
+  getPhoneById,
+  getCountOfPhone
 };

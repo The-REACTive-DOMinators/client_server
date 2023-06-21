@@ -6,13 +6,16 @@ import { Products } from '../models/Products';
 
 function getAll(queries: query) {
   const whereCondition = filterByQuery(queries);
+  const offset = (whereCondition.currentPage - 1) * whereCondition.amount;
+  const limit = whereCondition.amount * whereCondition.currentPage;
 
   return Products.findAll({
     where: {
       category: 'phones'
     },
-    limit: whereCondition.amount,
-    order: [[whereCondition.sortBy, whereCondition.sortType]]
+    order: [[whereCondition.sortBy, whereCondition.sortType]],
+    limit: limit - offset,
+    offset: offset
   });
 }
 
