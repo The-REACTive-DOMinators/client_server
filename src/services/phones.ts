@@ -1,4 +1,4 @@
-import { Phones } from '../models/Phone';
+import { Phones } from '../models/Phones';
 
 function getById(id: string) {
   return Phones.findByPk(id);
