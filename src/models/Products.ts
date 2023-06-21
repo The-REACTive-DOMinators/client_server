@@ -1,5 +1,6 @@
 import {
   AllowNull,
+  BelongsTo,
   Column,
   DataType,
   ForeignKey,
@@ -7,7 +8,8 @@ import {
   PrimaryKey,
   Table
 } from 'sequelize-typescript';
-import { Phones } from './Phone';
+import { Phones } from './Phones';
+import { User } from './User';
 
 @Table({
   tableName: 'products',
@@ -94,4 +96,14 @@ export class Products extends Model {
     type: DataType.STRING
   })
   image: string;
+
+  @ForeignKey(() => User)
+  @AllowNull(true)
+  @Column({
+    type: DataType.UUID
+  })
+  userId: string;
+
+  @BelongsTo(() => Phones)
+  phone: Phones;
 }
